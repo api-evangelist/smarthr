@@ -1,0 +1,174 @@
+aid: smarthr
+url: https://raw.githubusercontent.com/api-evangelist/smarthr/refs/heads/main/apis.yml
+name: SmartHR
+kind: company
+description: SmartHR is a leading Japanese cloud HR, labor, and personnel management
+  SaaS (smarthr.jp). Its per-tenant REST API exposes an organization's employee
+  ("crew") records and the master data around them - departments, employment types,
+  business establishments, and custom field templates - plus webhook subscriptions
+  for change notifications. The API is served from each customer's own tenant
+  subdomain (https://{tenant}.smarthr.jp/api) under a /v1 path, and is authenticated
+  with a per-tenant access token passed as a Bearer token.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- HR
+- Human Resources
+- HRIS
+- Labor Management
+- Payroll
+- Japan
+- Employees
+- Personnel
+- Onboarding
+- SaaS
+created: '2026-07-12'
+modified: '2026-07-12'
+specificationVersion: '0.19'
+apis:
+- aid: smarthr:smarthr-crews-api
+  name: SmartHR Crews API
+  tags:
+  - Crews
+  - Employees
+  - Personnel
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.smarthr.jp/api
+  baseURL: https://{tenant}.smarthr.jp/api
+  properties:
+  - url: https://developer.smarthr.jp/api/about_api
+    type: Documentation
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+  - url: openapi/smarthr-openapi.yml
+    type: OpenAPI
+  - url: collections/smarthr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smarthr.opencollection.json
+    type: OpenCollection
+  description: List, create, get, update, delete, and invite employee ("crew")
+    records - the core personnel objects in SmartHR - with pagination, sorting, and
+    filtering by employment status.
+- aid: smarthr:smarthr-departments-api
+  name: SmartHR Departments API
+  tags:
+  - Departments
+  - Organization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.smarthr.jp/api
+  baseURL: https://{tenant}.smarthr.jp/api
+  properties:
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+  - url: openapi/smarthr-openapi.yml
+    type: OpenAPI
+  - url: collections/smarthr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smarthr.opencollection.json
+    type: OpenCollection
+  description: Manage the organizational departments that crews belong to - create,
+    list, get, update, and delete departments, including parent/child hierarchy and
+    display ordering.
+- aid: smarthr:smarthr-employment-types-api
+  name: SmartHR Employment Types API
+  tags:
+  - Employment Types
+  - Master Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.smarthr.jp/api
+  baseURL: https://{tenant}.smarthr.jp/api
+  properties:
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+  - url: openapi/smarthr-openapi.yml
+    type: OpenAPI
+  - url: collections/smarthr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smarthr.opencollection.json
+    type: OpenCollection
+  description: Manage employment type master data (full-time, part-time, contract,
+    and custom types) - create, list, get, update, and delete employment types
+    referenced by crew records.
+- aid: smarthr:smarthr-custom-field-templates-api
+  name: SmartHR Custom Field Templates API
+  tags:
+  - Custom Fields
+  - Templates
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.smarthr.jp/api
+  baseURL: https://{tenant}.smarthr.jp/api
+  properties:
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+  - url: openapi/smarthr-openapi.yml
+    type: OpenAPI
+  - url: collections/smarthr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smarthr.opencollection.json
+    type: OpenCollection
+  description: Define and manage the custom field templates that attach additional,
+    organization-specific fields to crew records - text, number, date, enum, and
+    file field types with choice elements.
+- aid: smarthr:smarthr-business-establishments-api
+  name: SmartHR Business Establishments API
+  tags:
+  - Business Establishments
+  - Social Insurance
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.smarthr.jp/api
+  baseURL: https://{tenant}.smarthr.jp/api
+  properties:
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+  - url: openapi/smarthr-openapi.yml
+    type: OpenAPI
+  - url: collections/smarthr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smarthr.opencollection.json
+    type: OpenCollection
+  description: List the business establishments (jigyosho) registered for the tenant,
+    used for social insurance and labor administration filings.
+- aid: smarthr:smarthr-webhooks-api
+  name: SmartHR Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.smarthr.jp/api/about_webhook
+  baseURL: https://{tenant}.smarthr.jp/api
+  properties:
+  - url: https://developer.smarthr.jp/api/about_webhook
+    type: Documentation
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+  - url: openapi/smarthr-openapi.yml
+    type: OpenAPI
+  - url: collections/smarthr.postman_collection.json
+    type: PostmanCollection
+  - url: collections/smarthr.opencollection.json
+    type: OpenCollection
+  description: Create, list, get, update, and delete webhook subscriptions so
+    external systems are notified when crews and other records change - for example
+    to auto-provision cloud accounts at onboarding.
+common:
+- type: DomainSecurity
+  url: security/smarthr-domain-security.yml
+- type: Authentication
+  url: authentication/smarthr-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/kufu
+- type: LinkedIn
+  url: https://www.linkedin.com/company/smarthr
+- type: Website
+  url: https://smarthr.jp/
+- type: Documentation
+  url: https://developer.smarthr.jp/
+- type: Plans
+  url: plans/smarthr-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/smarthr-rate-limits.yml
+- type: FinOps
+  url: finops/smarthr-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

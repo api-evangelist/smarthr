@@ -1,0 +1,303 @@
+{
+  "info": {
+    "name": "SmartHR API",
+    "description": "Per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp). Base URL: https://{tenant}.smarthr.jp/api - replace {tenant} with your SmartHR subdomain. All resources live under /v1. Authenticate with a per-tenant access token as `Authorization: Bearer ACCESS_TOKEN` (HTTP Basic with the token as username is also accepted). Rate limits: 5,000 req/hour and 10 req/sec per token, 50,000 req/min per subdomain.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{accessToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://your-subdomain.smarthr.jp/api", "type": "string" },
+    { "key": "accessToken", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Crews",
+      "item": [
+        {
+          "name": "List crews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/crews?page=1&per_page=10", "host": ["{{baseUrl}}"], "path": ["v1", "crews"], "query": [{ "key": "page", "value": "1" }, { "key": "per_page", "value": "10" }] },
+            "description": "Lists employee (crew) records with pagination, sorting, and filtering by employment status."
+          }
+        },
+        {
+          "name": "Create a crew",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"emp_code\": \"E-0001\",\n  \"last_name\": \"山田\",\n  \"first_name\": \"太郎\",\n  \"business_email\": \"taro.yamada@example.com\"\n}" },
+            "url": { "raw": "{{baseUrl}}/v1/crews", "host": ["{{baseUrl}}"], "path": ["v1", "crews"] },
+            "description": "Creates a new employee (crew) record."
+          }
+        },
+        {
+          "name": "Get a crew",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/crews/:id", "host": ["{{baseUrl}}"], "path": ["v1", "crews", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single crew record by ID."
+          }
+        },
+        {
+          "name": "Update a crew",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v1/crews/:id", "host": ["{{baseUrl}}"], "path": ["v1", "crews", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates an existing crew record."
+          }
+        },
+        {
+          "name": "Delete a crew",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/crews/:id", "host": ["{{baseUrl}}"], "path": ["v1", "crews", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Deletes a crew record."
+          }
+        },
+        {
+          "name": "Invite a crew",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v1/crews/:id/invite", "host": ["{{baseUrl}}"], "path": ["v1", "crews", ":id", "invite"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Sends a SmartHR account invitation to the employee so they can log in and complete their profile."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Departments",
+      "item": [
+        {
+          "name": "List departments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/departments", "host": ["{{baseUrl}}"], "path": ["v1", "departments"] },
+            "description": "Lists departments for the tenant."
+          }
+        },
+        {
+          "name": "Create a department",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Engineering\"\n}" },
+            "url": { "raw": "{{baseUrl}}/v1/departments", "host": ["{{baseUrl}}"], "path": ["v1", "departments"] },
+            "description": "Creates a new department."
+          }
+        },
+        {
+          "name": "Get a department",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/departments/:id", "host": ["{{baseUrl}}"], "path": ["v1", "departments", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single department by ID."
+          }
+        },
+        {
+          "name": "Update a department",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v1/departments/:id", "host": ["{{baseUrl}}"], "path": ["v1", "departments", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates an existing department."
+          }
+        },
+        {
+          "name": "Delete a department",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/departments/:id", "host": ["{{baseUrl}}"], "path": ["v1", "departments", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Deletes a department."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Employment Types",
+      "item": [
+        {
+          "name": "List employment types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/employment_types", "host": ["{{baseUrl}}"], "path": ["v1", "employment_types"] },
+            "description": "Lists employment type master records for the tenant."
+          }
+        },
+        {
+          "name": "Create an employment type",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Full-time\"\n}" },
+            "url": { "raw": "{{baseUrl}}/v1/employment_types", "host": ["{{baseUrl}}"], "path": ["v1", "employment_types"] },
+            "description": "Creates a new employment type."
+          }
+        },
+        {
+          "name": "Get an employment type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/employment_types/:id", "host": ["{{baseUrl}}"], "path": ["v1", "employment_types", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single employment type by ID."
+          }
+        },
+        {
+          "name": "Update an employment type",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v1/employment_types/:id", "host": ["{{baseUrl}}"], "path": ["v1", "employment_types", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates an existing employment type."
+          }
+        },
+        {
+          "name": "Delete an employment type",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/employment_types/:id", "host": ["{{baseUrl}}"], "path": ["v1", "employment_types", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Deletes an employment type."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom Field Templates",
+      "item": [
+        {
+          "name": "List crew custom field templates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/crew_custom_field_templates", "host": ["{{baseUrl}}"], "path": ["v1", "crew_custom_field_templates"] },
+            "description": "Lists the custom field templates that define additional fields on crew records."
+          }
+        },
+        {
+          "name": "Create a crew custom field template",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"T-shirt size\",\n  \"type\": \"enum\"\n}" },
+            "url": { "raw": "{{baseUrl}}/v1/crew_custom_field_templates", "host": ["{{baseUrl}}"], "path": ["v1", "crew_custom_field_templates"] },
+            "description": "Creates a new crew custom field template."
+          }
+        },
+        {
+          "name": "Get a crew custom field template",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/crew_custom_field_templates/:id", "host": ["{{baseUrl}}"], "path": ["v1", "crew_custom_field_templates", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single crew custom field template by ID."
+          }
+        },
+        {
+          "name": "Update a crew custom field template",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v1/crew_custom_field_templates/:id", "host": ["{{baseUrl}}"], "path": ["v1", "crew_custom_field_templates", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates an existing crew custom field template."
+          }
+        },
+        {
+          "name": "Delete a crew custom field template",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/crew_custom_field_templates/:id", "host": ["{{baseUrl}}"], "path": ["v1", "crew_custom_field_templates", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Deletes a crew custom field template."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Business Establishments",
+      "item": [
+        {
+          "name": "List business establishments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/biz_establishments", "host": ["{{baseUrl}}"], "path": ["v1", "biz_establishments"] },
+            "description": "Lists the business establishments (jigyosho) registered for the tenant."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/webhooks", "host": ["{{baseUrl}}"], "path": ["v1", "webhooks"] },
+            "description": "Lists webhook subscriptions configured for the tenant."
+          }
+        },
+        {
+          "name": "Create a webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"url\": \"https://example.com/smarthr/webhook\",\n  \"secret_token\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/v1/webhooks", "host": ["{{baseUrl}}"], "path": ["v1", "webhooks"] },
+            "description": "Creates a webhook subscription."
+          }
+        },
+        {
+          "name": "Get a webhook",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/webhooks/:id", "host": ["{{baseUrl}}"], "path": ["v1", "webhooks", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single webhook subscription by ID."
+          }
+        },
+        {
+          "name": "Update a webhook",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/v1/webhooks/:id", "host": ["{{baseUrl}}"], "path": ["v1", "webhooks", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates an existing webhook subscription."
+          }
+        },
+        {
+          "name": "Delete a webhook",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/v1/webhooks/:id", "host": ["{{baseUrl}}"], "path": ["v1", "webhooks", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Deletes a webhook subscription."
+          }
+        }
+      ]
+    }
+  ]
+}

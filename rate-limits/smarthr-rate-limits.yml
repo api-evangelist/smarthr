@@ -1,0 +1,76 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: SmartHR
+providerId: smarthr
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- HR
+- Human Resources
+- Japan
+- Rate Limiting
+- Quotas
+description: >-
+  SmartHR publishes numeric rate limits for its API in the API overview
+  documentation. Limits apply both per access token and per subdomain (tenant).
+  Responses expose the remaining quota and reset time via `x-rate-limit-*`
+  headers, and there is a separate, tighter "intensive" limit surfaced through
+  `x-intensive-rate-limit-*` headers for heavier operations. Exceeding a limit
+  returns HTTP 429.
+notes: >-
+  Values are grounded in SmartHR's published API overview
+  (developer.smarthr.jp/api/about_api) as of the review date; the exact set of
+  operations governed by the "intensive" limit is not fully enumerated in the
+  docs and should be confirmed during reconciliation.
+sources:
+- https://developer.smarthr.jp/api/about_api
+- https://support.smarthr.jp/ja/help/articles/4402360231321/
+responseCodes:
+  throttled: 429
+limits:
+- name: Per Access Token (hourly)
+  scope: access_token
+  metric: requests
+  limit: 5000
+  timeFrame: hour
+  notes: 5,000 requests per hour per access token.
+- name: Per Access Token (per second)
+  scope: access_token
+  metric: requests
+  limit: 10
+  timeFrame: second
+  notes: 10 requests per second per access token.
+- name: Per Subdomain
+  scope: subdomain
+  metric: requests
+  limit: 50000
+  timeFrame: minute
+  notes: 50,000 requests per minute per tenant subdomain.
+- name: Intensive Operations
+  scope: access_token
+  metric: requests
+  limit: not fully documented
+  notes: A tighter "intensive" limit applies to heavier operations, surfaced via x-intensive-rate-limit-* headers.
+headers:
+- name: x-rate-limit-limit
+  description: Maximum requests allowed in the current window.
+- name: x-rate-limit-remaining
+  description: Requests remaining in the current window.
+- name: x-rate-limit-reset
+  description: Time at which the current rate-limit window resets.
+- name: x-intensive-rate-limit-limit
+  description: Maximum intensive-operation requests allowed in the current window.
+- name: x-intensive-rate-limit-remaining
+  description: Intensive-operation requests remaining in the current window.
+- name: x-intensive-rate-limit-reset
+  description: Time at which the intensive-operation window resets.
+policies:
+- name: Pagination
+  description: List endpoints use page (from 1) and per_page (default 10, max 100), with a Link header (first/last/next/prev) and x-total-count.
+- name: Backoff Strategy
+  description: Clients should honor the x-rate-limit-reset / x-intensive-rate-limit-reset values and back off with jitter on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

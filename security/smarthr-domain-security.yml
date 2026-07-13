@@ -1,0 +1,33 @@
+generated: '2026-07-12'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + documentation hosts
+hosts:
+- host: smarthr.jp
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  7 08:23:24 2026 GMT
+  hsts: true
+  hsts_max_age: 0
+  hsts_note: HSTS header present but max-age=0 (effectively not enforcing).
+- host: developer.smarthr.jp
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 24 20:21:34 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+domains:
+- domain: smarthr.jp
+  dnssec: false
+  caa: []
+  spf: true
+  spf_policy: '-all'
+  dmarc: true
+  dmarc_policy: reject
+- domain: developer.smarthr.jp
+  dnssec: false
+  caa:
+  - '0 issue "globalsign.com"'
+  - '0 issue "letsencrypt.org"'
+  spf: false
+  dmarc: false
+  note: developer.smarthr.jp is served via Vercel (CNAME cname.vercel-dns.com).

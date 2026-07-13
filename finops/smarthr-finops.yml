@@ -1,0 +1,91 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: SmartHR
+providerId: smarthr
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- HR
+- Human Resources
+- Japan
+- SaaS
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of SmartHR spend. SmartHR is a per-employee, per-month SaaS
+  subscription billed in Japanese yen (JPY). The dominant cost driver is
+  headcount (number of registered employees / "crews") multiplied by the
+  per-employee rate of the chosen plan tier, plus the functional scope of that
+  tier (labor administration vs. talent management vs. combined). The API and
+  webhooks are included with the platform subscription rather than metered as a
+  separate line item, so API usage does not generate incremental invoice cost -
+  cost changes when headcount or plan tier changes.
+notes: >-
+  Per-employee JPY rates are not publicly listed (quote-based), so unit rates are
+  not reconciled here. There is a free tier up to 30 employees. Verify tier
+  rates and headcount-based totals on the SmartHR pricing page during
+  reconciliation.
+sources:
+- https://smarthr.jp/pricing/
+- https://support.smarthr.jp/ja/help/articles/360026107894/
+- https://developer.smarthr.jp/api/about_api
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: SmartHR, Inc.
+serviceCategory: Human Resources and Personnel Management
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: JPY
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: SmartHR
+  ServiceCategory: Human Resources and Personnel Management
+  ProviderName: SmartHR
+  PublisherName: SmartHR, Inc.
+  InvoiceIssuerName: SmartHR, Inc.
+  BillingCurrency: JPY
+  ChargeCategory: Usage
+  PricingCategory: Subscription-Based
+meters:
+- name: registered_employees
+  description: Number of registered employees (crews) - the primary per-seat billing driver, priced per employee per month.
+  unit: employees
+  aggregation: max
+  dimensions:
+  - tenant
+  - plan_tier
+- name: plan_tier
+  description: Functional scope of the subscription (labor administration, talent management, or combined HR strategy).
+  unit: tier
+  aggregation: last
+  dimensions:
+  - tenant
+- name: api_access
+  description: API and webhook access, included with the platform subscription (no separate metered charge).
+  unit: included
+  aggregation: last
+  dimensions:
+  - tenant
+principles:
+- name: Visibility
+  description: Track registered employee headcount per tenant against the per-employee plan rate; headcount at contract time drives the bill.
+- name: Allocation
+  description: Map SmartHR cost to HR/People-Ops cost centers; allocate by department or business establishment where multiple entities share a tenant.
+- name: Optimization
+  description: Right-size the plan tier to the functions actually used, and reconcile registered vs. active employees so retired records do not inflate seat counts.
+- name: Accountability
+  description: Review headcount and plan tier before renewal; SmartHR requires a plan review when employee count grows.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

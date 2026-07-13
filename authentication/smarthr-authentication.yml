@@ -1,0 +1,18 @@
+generated: '2026-07-12'
+method: derived
+source: openapi/smarthr-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: >-
+    Per-tenant access token issued from the SmartHR admin console (OAuth2 access
+    tokens are used for registered apps), passed as `Authorization: Bearer
+    ACCESS_TOKEN`. HTTP Basic auth with the access token as the username
+    (`curl -u ACCESS_TOKEN`) is also accepted.
+  sources:
+  - openapi/smarthr-openapi.yml
+  - https://developer.smarthr.jp/api/about_api

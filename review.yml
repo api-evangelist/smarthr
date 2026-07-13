@@ -1,0 +1,127 @@
+aid: smarthr
+name: SmartHR
+review:
+  question: Does SmartHR expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-12'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. SmartHR's public developer API is a
+    request/response REST API served per-tenant at
+    https://{tenant}.smarthr.jp/api under a /v1 path. Its only server-push
+    mechanism is outbound webhooks - SmartHR POSTs event notifications to a
+    customer-configured HTTPS URL - which is plain HTTP delivery, not a
+    WebSocket. No wss:// (or ws://) endpoint is documented anywhere in the
+    SmartHR API or webhook documentation, so there is no realtime WebSocket
+    transport to model.
+findings:
+  summary: |
+    SmartHR does not publish a documented public WebSocket API. SmartHR is a
+    Japanese cloud HR / labor / personnel management SaaS. Its public API is a
+    per-tenant REST API: each customer accesses it at their own subdomain,
+    https://{tenant}.smarthr.jp/api, with all resources under /v1 (for example
+    GET /v1/crews). Authentication is a per-tenant access token passed as
+    `Authorization: Bearer ACCESS_TOKEN` (HTTP Basic with the token as username
+    is also accepted; OAuth2 access tokens are used for registered apps).
+    Asynchronous change delivery is handled by outbound webhooks (SmartHR POSTs
+    to a configured HTTPS URL), not by a WebSocket. No ws:// or wss:// endpoint
+    is documented.
+  accessModel: |
+    Per-tenant hosting. There is no single shared API host - each SmartHR
+    customer has a dedicated subdomain (e.g. https://acme.smarthr.jp/api). The
+    OpenAPI models this with a `tenant` server variable rather than a fabricated
+    fixed host. A separate Sandbox environment is offered for testing (documented
+    under "Sandbox概要") but its host was not independently verified and is not
+    modeled here.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{tenant}.smarthr.jp/api
+      documented: true
+      note: Per-tenant REST API; all resources under /v1. Bearer or Basic access-token auth.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound event notifications POSTed to a customer-configured HTTPS URL. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the SmartHR API or webhook reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://{tenant}.smarthr.jp/api/v1/crews
+    - POST   https://{tenant}.smarthr.jp/api/v1/crews
+    - GET    https://{tenant}.smarthr.jp/api/v1/crews/{id}
+    - PATCH  https://{tenant}.smarthr.jp/api/v1/crews/{id}
+    - DELETE https://{tenant}.smarthr.jp/api/v1/crews/{id}
+    - PUT    https://{tenant}.smarthr.jp/api/v1/crews/{id}/invite
+    - GET    https://{tenant}.smarthr.jp/api/v1/departments
+    - POST   https://{tenant}.smarthr.jp/api/v1/departments
+    - GET    https://{tenant}.smarthr.jp/api/v1/departments/{id}
+    - PATCH  https://{tenant}.smarthr.jp/api/v1/departments/{id}
+    - DELETE https://{tenant}.smarthr.jp/api/v1/departments/{id}
+    - GET    https://{tenant}.smarthr.jp/api/v1/employment_types
+    - POST   https://{tenant}.smarthr.jp/api/v1/employment_types
+    - GET    https://{tenant}.smarthr.jp/api/v1/employment_types/{id}
+    - PATCH  https://{tenant}.smarthr.jp/api/v1/employment_types/{id}
+    - DELETE https://{tenant}.smarthr.jp/api/v1/employment_types/{id}
+    - GET    https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates
+    - POST   https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates
+    - GET    https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates/{id}
+    - PATCH  https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates/{id}
+    - DELETE https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates/{id}
+    - GET    https://{tenant}.smarthr.jp/api/v1/biz_establishments
+    - GET    https://{tenant}.smarthr.jp/api/v1/webhooks
+    - POST   https://{tenant}.smarthr.jp/api/v1/webhooks
+    - GET    https://{tenant}.smarthr.jp/api/v1/webhooks/{id}
+    - PATCH  https://{tenant}.smarthr.jp/api/v1/webhooks/{id}
+    - DELETE https://{tenant}.smarthr.jp/api/v1/webhooks/{id}
+  endpointsDocumentedNotModeled:
+    - note: |
+        SmartHR's official API reference documents additional resources that are
+        real but were NOT modeled in the OpenAPI for this entry, to keep the
+        modeled subset to endpoints and shapes verified against the published
+        API-overview docs and the community Go SDK
+        (github.com/ktsujichan/smarthr-sdk-go). These include dependents
+        (扶養家族), bank accounts, payrolls (給与), positions/job titles (役職),
+        tags, companies, and crew custom field template groups/elements. Their
+        exact paths and payloads were not independently confirmed in this review
+        and are intentionally omitted rather than guessed.
+  groundingNote: |
+    The six modeled resource groups (crews with the /invite action, departments,
+    employment_types, crew_custom_field_templates, biz_establishments, webhooks)
+    and the per-tenant base host + /v1 path are grounded against SmartHR's
+    published API-overview documentation and the endpoint paths in the Go SDK.
+    Request/response property shapes are representative and modeled from the
+    documented object semantics; individual field names beyond the documented
+    core (emp_status, emp_code, name/yomi, department_ids, employment_type_id,
+    entered_at/resigned_at) should be re-verified against the live API reference
+    during reconciliation.
+sources:
+  - url: https://developer.smarthr.jp/
+    type: Documentation
+    note: SmartHR for Developers documentation home.
+  - url: https://developer.smarthr.jp/api/about_api
+    type: Documentation
+    note: API overview - per-tenant host https://*.smarthr.jp/api, /v1 paths, Bearer/Basic access-token auth, rate limits, pagination.
+  - url: https://developer.smarthr.jp/api/about_webhook
+    type: Documentation
+    note: Webhook overview - outbound HTTPS event notifications. No WebSocket.
+  - url: https://developer.smarthr.jp/api
+    type: APIReference
+    note: SmartHR API reference (Japanese). Covers crews and related resources.
+  - url: https://github.com/ktsujichan/smarthr-sdk-go
+    type: SourceCode
+    note: Community Go SDK; confirms /v1 endpoint paths for crews, departments, employment_types, crew_custom_field_templates, biz_establishments, and webhooks.
+  - url: https://smarthr.jp/pricing/
+    type: Pricing
+    note: SmartHR pricing - free plan up to 30 employees; paid plans priced per employee/month (quote-based).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. SmartHR's public API is
+    request/response REST over HTTPS (per-tenant, /v1), and its only push
+    mechanism is outbound webhooks (HTTP POST to a configured URL). No AsyncAPI
+    document was created because there is no server-push streaming transport on
+    SmartHR's own API to model.

@@ -1,0 +1,139 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: SmartHR
+providerId: smarthr
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- HR
+- Human Resources
+- Japan
+- SaaS
+- Plans
+description: >-
+  SmartHR is sold as a per-employee, per-month SaaS subscription in Japanese yen
+  (JPY). There is a free "¥0 plan" for organizations of up to 30 employees that
+  supports basic employee-information registration, and paid plans layered by
+  functional scope (labor/HR administration, talent management, and a combined
+  HR-strategy tier). Paid pricing scales with employee headcount and is
+  quote-based (要問い合わせ) - SmartHR does not publish fixed per-employee list
+  prices. The API and webhooks are part of the SmartHR platform and are not sold
+  as a separately metered product; API access follows the underlying
+  subscription.
+notes: >-
+  SmartHR publishes plan tiers but not fixed per-employee JPY rates; paid pricing
+  is quote-based and varies by headcount, functional scope, and contract term.
+  The plan entries below capture the published structure, not reconciled prices.
+  Verify current tiers and any per-employee rates on the SmartHR pricing page
+  during reconciliation.
+sources:
+- https://smarthr.jp/pricing/
+- https://support.smarthr.jp/ja/help/articles/360026107894/
+- https://developer.smarthr.jp/api/about_api
+currency: JPY
+plans:
+- id: smarthr-free
+  name: '¥0 Plan (Free)'
+  type: free
+  description: >-
+    Free tier for organizations of up to 30 employees. Supports employee
+    information registration and basic HR data management, but excludes
+    procedures such as electronic social-insurance / employment-insurance
+    filings and year-end adjustment. API access is available within platform
+    limits.
+  entries:
+  - label: Employees
+    name: free_employees
+    type: usage
+    metric: employees
+    limit: 30
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: '0'
+    currency: JPY
+    userMultiplied: false
+  elements:
+  - name: Employee Database
+  - name: API Access
+  - name: Webhooks
+- id: smarthr-labor
+  name: Labor / HR Administration
+  type: paid
+  description: >-
+    Paid plan focused on core labor and HR administration - employee database,
+    electronic administrative procedures (social insurance, employment
+    insurance), payroll-adjacent workflows, and year-end adjustment. Priced per
+    employee per month; quote-based.
+  entries:
+  - label: Per Employee / Month
+    name: labor_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: quote-based (per employee/month, JPY)
+    currency: JPY
+    userMultiplied: true
+  elements:
+  - name: Employee Database
+  - name: Electronic Administrative Procedures
+  - name: Year-End Adjustment
+  - name: API Access
+  - name: Webhooks
+- id: smarthr-talent
+  name: Talent Management
+  type: paid
+  description: >-
+    Paid plan adding strategic talent-management capabilities - personnel
+    evaluation, position simulation, skill management, employee surveys, and
+    analysis reports. Priced per employee per month; quote-based.
+  entries:
+  - label: Per Employee / Month
+    name: talent_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: quote-based (per employee/month, JPY)
+    currency: JPY
+    userMultiplied: true
+  elements:
+  - name: Personnel Evaluation
+  - name: Skill Management
+  - name: Employee Surveys
+  - name: Analysis Reports
+  - name: API Access
+- id: smarthr-hr-strategy
+  name: HR Strategy (Combined)
+  type: enterprise
+  description: >-
+    Combined plan spanning both labor/HR administration and talent management,
+    aimed at organizations building a strategic HR foundation. Priced per
+    employee per month; quote-based, negotiated by headcount and scope.
+  entries:
+  - label: Per Employee / Month
+    name: hr_strategy_per_employee
+    type: usage
+    metric: employees
+    limit: -1
+    timeFrame: month
+    geo: japan
+    unit: 1
+    price: contact sales (per employee/month, JPY)
+    currency: JPY
+    userMultiplied: true
+  elements:
+  - name: Full Labor Administration
+  - name: Full Talent Management
+  - name: API Access
+  - name: Webhooks
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

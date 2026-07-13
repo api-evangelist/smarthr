@@ -1,0 +1,309 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SmartHR API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{accessToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Crews", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List crews.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crews",
+            "params": [
+              { "name": "page", "value": "1", "type": "query", "description": "Page number, starting at 1." },
+              { "name": "per_page", "value": "10", "type": "query", "description": "Records per page (max 100)." }
+            ]
+          },
+          "docs": "Lists employee (crew) records with pagination, sorting, and filtering by employment status."
+        },
+        {
+          "info": { "name": "Create a crew.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crews",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Creates a new employee (crew) record."
+        },
+        {
+          "info": { "name": "Get a crew.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crews/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The crew ID." }
+            ]
+          },
+          "docs": "Retrieves a single crew record by ID."
+        },
+        {
+          "info": { "name": "Update a crew.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crews/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The crew ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing crew record."
+        },
+        {
+          "info": { "name": "Delete a crew.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crews/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The crew ID." }
+            ]
+          },
+          "docs": "Deletes a crew record."
+        },
+        {
+          "info": { "name": "Invite a crew.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crews/:id/invite",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The crew ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Sends a SmartHR account invitation to the employee."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Departments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List departments.", "type": "http" },
+          "http": { "method": "GET", "url": "https://your-subdomain.smarthr.jp/api/v1/departments" },
+          "docs": "Lists departments for the tenant."
+        },
+        {
+          "info": { "name": "Create a department.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/departments",
+            "body": { "type": "json", "data": "{\"name\":\"Engineering\"}" }
+          },
+          "docs": "Creates a new department."
+        },
+        {
+          "info": { "name": "Get a department.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/departments/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The department ID." }
+            ]
+          },
+          "docs": "Retrieves a single department by ID."
+        },
+        {
+          "info": { "name": "Update a department.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/departments/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The department ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing department."
+        },
+        {
+          "info": { "name": "Delete a department.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/departments/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The department ID." }
+            ]
+          },
+          "docs": "Deletes a department."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Employment Types", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List employment types.", "type": "http" },
+          "http": { "method": "GET", "url": "https://your-subdomain.smarthr.jp/api/v1/employment_types" },
+          "docs": "Lists employment type master records for the tenant."
+        },
+        {
+          "info": { "name": "Create an employment type.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/employment_types",
+            "body": { "type": "json", "data": "{\"name\":\"Full-time\"}" }
+          },
+          "docs": "Creates a new employment type."
+        },
+        {
+          "info": { "name": "Get an employment type.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/employment_types/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The employment type ID." }
+            ]
+          },
+          "docs": "Retrieves a single employment type by ID."
+        },
+        {
+          "info": { "name": "Update an employment type.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/employment_types/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The employment type ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing employment type."
+        },
+        {
+          "info": { "name": "Delete an employment type.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/employment_types/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The employment type ID." }
+            ]
+          },
+          "docs": "Deletes an employment type."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Custom Field Templates", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List crew custom field templates.", "type": "http" },
+          "http": { "method": "GET", "url": "https://your-subdomain.smarthr.jp/api/v1/crew_custom_field_templates" },
+          "docs": "Lists the custom field templates that define additional fields on crew records."
+        },
+        {
+          "info": { "name": "Create a crew custom field template.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crew_custom_field_templates",
+            "body": { "type": "json", "data": "{\"name\":\"T-shirt size\",\"type\":\"enum\"}" }
+          },
+          "docs": "Creates a new crew custom field template."
+        },
+        {
+          "info": { "name": "Get a crew custom field template.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crew_custom_field_templates/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The custom field template ID." }
+            ]
+          },
+          "docs": "Retrieves a single crew custom field template by ID."
+        },
+        {
+          "info": { "name": "Update a crew custom field template.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crew_custom_field_templates/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The custom field template ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing crew custom field template."
+        },
+        {
+          "info": { "name": "Delete a crew custom field template.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/crew_custom_field_templates/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The custom field template ID." }
+            ]
+          },
+          "docs": "Deletes a crew custom field template."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Business Establishments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List business establishments.", "type": "http" },
+          "http": { "method": "GET", "url": "https://your-subdomain.smarthr.jp/api/v1/biz_establishments" },
+          "docs": "Lists the business establishments (jigyosho) registered for the tenant."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List webhooks.", "type": "http" },
+          "http": { "method": "GET", "url": "https://your-subdomain.smarthr.jp/api/v1/webhooks" },
+          "docs": "Lists webhook subscriptions configured for the tenant."
+        },
+        {
+          "info": { "name": "Create a webhook.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/webhooks",
+            "body": { "type": "json", "data": "{\"url\":\"https://example.com/smarthr/webhook\"}" }
+          },
+          "docs": "Creates a webhook subscription."
+        },
+        {
+          "info": { "name": "Get a webhook.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/webhooks/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The webhook ID." }
+            ]
+          },
+          "docs": "Retrieves a single webhook subscription by ID."
+        },
+        {
+          "info": { "name": "Update a webhook.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/webhooks/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The webhook ID." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing webhook subscription."
+        },
+        {
+          "info": { "name": "Delete a webhook.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-subdomain.smarthr.jp/api/v1/webhooks/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The webhook ID." }
+            ]
+          },
+          "docs": "Deletes a webhook subscription."
+        }
+      ]
+    }
+  ]
+}
