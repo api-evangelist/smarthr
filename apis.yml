@@ -151,6 +151,8 @@ apis:
     external systems are notified when crews and other records change - for example
     to auto-provision cloud accounts at onboarding.
 common:
+- type: AgenticAccess
+  url: agentic-access/smarthr-agentic-access.yml
 - type: DomainSecurity
   url: security/smarthr-domain-security.yml
 - type: Authentication
