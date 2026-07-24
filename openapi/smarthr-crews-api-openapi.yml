@@ -1,0 +1,334 @@
+openapi: 3.0.3
+info:
+  title: SmartHR Business Establishments Crews API
+  description: 'The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp). It exposes an organization''s employee ("crew") records and the master data around them - departments, employment types, custom field templates, business establishments - plus webhook subscriptions for change notifications. The API is served from each customer''s own tenant subdomain (https://{tenant}.smarthr.jp/api) and all resources live under the /v1 path. Authentication is a per-tenant access token passed as a Bearer token (or via HTTP Basic with the token as the username).
+
+    This document models a representative, grounded subset of the API. The endpoints below are confirmed against SmartHR''s published API reference and the community Go SDK (github.com/ktsujichan/smarthr-sdk-go). SmartHR''s full API reference documents additional resources (dependents, bank accounts, payrolls, positions, job titles, tags, companies, and more) that are not modeled here.'
+  version: '1.0'
+  contact:
+    name: SmartHR for Developers
+    url: https://developer.smarthr.jp/
+  termsOfService: https://developer.smarthr.jp/terms/index.html
+servers:
+- url: https://{tenant}.smarthr.jp/api
+  description: Production tenant. Replace {tenant} with your SmartHR subdomain. Each customer has their own subdomain; there is no single shared host.
+  variables:
+    tenant:
+      default: your-subdomain
+      description: The customer's SmartHR tenant subdomain.
+security:
+- bearerAuth: []
+tags:
+- name: Crews
+  description: Employee ("crew") records - the core personnel objects in SmartHR.
+paths:
+  /v1/crews:
+    get:
+      operationId: listCrews
+      tags:
+      - Crews
+      summary: List crews
+      description: Lists employee (crew) records for the tenant. Supports pagination via page and per_page, sorting via sort, and filtering by employment status and other attributes.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      - name: sort
+        in: query
+        required: false
+        description: Property to sort by, for example emp_status.
+        schema:
+          type: string
+      - name: emp_status
+        in: query
+        required: false
+        description: Filter by employment status.
+        schema:
+          type: string
+          enum:
+          - employed
+          - absent
+          - retired
+      responses:
+        '200':
+          description: A page of crew records.
+          headers:
+            x-total-count:
+              $ref: '#/components/headers/XTotalCount'
+            x-rate-limit-remaining:
+              $ref: '#/components/headers/XRateLimitRemaining'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Crew'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    post:
+      operationId: createCrew
+      tags:
+      - Crews
+      summary: Create a crew
+      description: Creates a new employee (crew) record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrewInput'
+      responses:
+        '201':
+          description: The created crew record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crew'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /v1/crews/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCrew
+      tags:
+      - Crews
+      summary: Get a crew
+      description: Retrieves a single employee (crew) record by ID.
+      responses:
+        '200':
+          description: The requested crew record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crew'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    patch:
+      operationId: updateCrew
+      tags:
+      - Crews
+      summary: Update a crew
+      description: Updates an existing employee (crew) record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrewInput'
+      responses:
+        '200':
+          description: The updated crew record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crew'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+    delete:
+      operationId: deleteCrew
+      tags:
+      - Crews
+      summary: Delete a crew
+      description: Deletes an employee (crew) record.
+      responses:
+        '204':
+          description: The crew record was deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /v1/crews/{id}/invite:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    put:
+      operationId: inviteCrew
+      tags:
+      - Crews
+      summary: Invite a crew
+      description: Sends a SmartHR account invitation to the employee (crew) so they can log in and complete their own profile.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                crew_input_form_id:
+                  type: string
+                  description: Optional ID of the input form to attach to the invitation.
+      responses:
+        '200':
+          description: The invitation was sent.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Crew'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, starting at 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: string
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Number of records per page (max 100).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  schemas:
+    Crew:
+      allOf:
+      - $ref: '#/components/schemas/CrewInput'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: Unique crew identifier.
+          emp_status:
+            type: string
+            description: Employment status.
+            enum:
+            - employed
+            - absent
+            - retired
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    CrewInput:
+      type: object
+      properties:
+        emp_code:
+          type: string
+          description: Employee code within the organization.
+        last_name:
+          type: string
+        first_name:
+          type: string
+        last_name_yomi:
+          type: string
+          description: Phonetic (kana) reading of the last name.
+        first_name_yomi:
+          type: string
+          description: Phonetic (kana) reading of the first name.
+        business_email:
+          type: string
+          format: email
+        department_ids:
+          type: array
+          items:
+            type: string
+        employment_type_id:
+          type: string
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+        birth_at:
+          type: string
+          format: date
+        entered_at:
+          type: string
+          format: date
+          description: Date the employee joined.
+        resigned_at:
+          type: string
+          format: date
+          description: Date the employee resigned, if applicable.
+  headers:
+    XRateLimitRemaining:
+      description: Remaining requests in the current rate-limit window.
+      schema:
+        type: integer
+    XTotalCount:
+      description: Total number of records matching the query.
+      schema:
+        type: integer
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Per-tenant access token issued from the SmartHR admin console (or obtained via OAuth2 for registered apps), passed as `Authorization: Bearer ACCESS_TOKEN`. HTTP Basic auth with the access token as the username (`curl -u ACCESS_TOKEN`) is also accepted.'
