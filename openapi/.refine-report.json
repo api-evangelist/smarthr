@@ -1,0 +1,24 @@
+{
+  "provider": "smarthr",
+  "sources": [
+    "smarthr-business-establishments-api-openapi.yml",
+    "smarthr-crews-api-openapi.yml",
+    "smarthr-custom-field-templates-api-openapi.yml",
+    "smarthr-departments-api-openapi.yml",
+    "smarthr-employment-types-api-openapi.yml",
+    "smarthr-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "smarthr-business-establishments-api-openapi.yml",
+    "smarthr-crews-api-openapi.yml",
+    "smarthr-custom-field-templates-api-openapi.yml",
+    "smarthr-departments-api-openapi.yml",
+    "smarthr-employment-types-api-openapi.yml",
+    "smarthr-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
