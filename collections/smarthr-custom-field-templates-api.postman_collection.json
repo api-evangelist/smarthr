@@ -1,0 +1,1553 @@
+{
+  "item": [
+    {
+      "id": "fadbc920-b6ac-46f2-a0a9-58e23715c056",
+      "name": "Custom Field Templates",
+      "description": {
+        "content": "Templates defining custom fields attached to crew records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6b9a2f8-c514-4093-85ed-a3567fe97434",
+          "name": "List crew custom field templates",
+          "request": {
+            "name": "List crew custom field templates",
+            "description": {
+              "content": "Lists the custom field templates that define additional fields attached to crew records for the tenant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crew_custom_field_templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number, starting at 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Number of records per page (max 100)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d80f3d81-8a82-47da-b5d3-2974a9627d12",
+              "name": "A page of custom field templates.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total number of records matching the query.",
+                  "key": "x-total-count",
+                  "value": "8953"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"type\": \"text_area\",\n    \"group_id\": \"string\",\n    \"elements\": [\n      {\n        \"name\": \"string\",\n        \"position\": 5899\n      },\n      {\n        \"name\": \"string\",\n        \"position\": 5701\n      }\n    ],\n    \"id\": \"string\",\n    \"created_at\": \"1985-01-25T17:33:25.500Z\",\n    \"updated_at\": \"2023-10-14T03:40:17.674Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"type\": \"text_area\",\n    \"group_id\": \"string\",\n    \"elements\": [\n      {\n        \"name\": \"string\",\n        \"position\": 4941\n      },\n      {\n        \"name\": \"string\",\n        \"position\": 8109\n      }\n    ],\n    \"id\": \"string\",\n    \"created_at\": \"1974-04-06T12:25:53.115Z\",\n    \"updated_at\": \"2023-04-09T12:52:10.519Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3eac721-bbc6-4899-9101-6bc75ecde0d6",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4245,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 788.2724371691907,\n      \"key_1\": false,\n      \"key_2\": 8030,\n      \"key_3\": false,\n      \"key_4\": 5900\n    },\n    {\n      \"key_0\": 585,\n      \"key_1\": false,\n      \"key_2\": false,\n      \"key_3\": 8279,\n      \"key_4\": 699.8571372116336\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f3ee815-82f6-4850-bf65-f6e11526b319",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5312a9e7-57b5-4dd1-bb2b-7f1eee6977f2",
+          "name": "Create a crew custom field template",
+          "request": {
+            "name": "Create a crew custom field template",
+            "description": {
+              "content": "Creates a new crew custom field template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crew_custom_field_templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ec35591-3093-4308-a0b3-5fd0fd37e1eb",
+              "name": "The created custom field template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"created_at\": \"1951-02-24T16:16:15.957Z\",\n  \"updated_at\": \"1968-04-11T23:13:18.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "868897db-410e-4e08-adf3-6b241b5c0dd6",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "867fa6c0-f18b-4746-a5aa-70be10a1caba",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90b7e3e4-9059-4c37-865a-f77ab4afa8fe",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "803426d0-75e5-4017-af8f-ad3689d505a5",
+          "name": "Get a crew custom field template",
+          "request": {
+            "name": "Get a crew custom field template",
+            "description": {
+              "content": "Retrieves a single crew custom field template by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crew_custom_field_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6493551e-2b99-4356-9624-cc390c1880ae",
+              "name": "The requested custom field template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"created_at\": \"1951-02-24T16:16:15.957Z\",\n  \"updated_at\": \"1968-04-11T23:13:18.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8ca92a0-2038-49c7-9164-e0efcdaf161d",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba78ee5e-e9e4-4ff7-bccb-7e098f18e0b0",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f476358-a88e-40cb-a361-03ba5d0a905f",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff879f7c-6b54-486d-b94a-1ebe6b75a163",
+          "name": "Update a crew custom field template",
+          "request": {
+            "name": "Update a crew custom field template",
+            "description": {
+              "content": "Updates an existing crew custom field template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crew_custom_field_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29adc15d-9716-4dcb-9de4-ac277d8e6d35",
+              "name": "The updated custom field template.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ],\n  \"id\": \"string\",\n  \"created_at\": \"1951-02-24T16:16:15.957Z\",\n  \"updated_at\": \"1968-04-11T23:13:18.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cea8e262-e0d4-4944-a78f-201b0fd0e32e",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e45abbea-e3cf-4e1e-89ea-3ef36c09f0a2",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76a49913-25ac-46b0-b56a-c7758563174f",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c9f28fa-8b36-48ff-82fd-89d1da03e8e7",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"group_id\": \"<string>\",\n  \"elements\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d588384b-6a72-4825-85ee-6cd6cfb07c55",
+          "name": "Delete a crew custom field template",
+          "request": {
+            "name": "Delete a crew custom field template",
+            "description": {
+              "content": "Deletes a crew custom field template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crew_custom_field_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca9f1826-e1aa-4fa7-b615-7c44686071b9",
+              "name": "The custom field template was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c591762-7b37-4076-b788-a7ae421876ea",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "849e09c5-9dee-4080-b1b5-91588116f494",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcddfda4-a282-42a9-b8f9-fb44132c240a",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crew_custom_field_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8546,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 4590.682250382443\n    },\n    {\n      \"key_0\": 7558.682724357611,\n      \"key_1\": 9557,\n      \"key_2\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The customer's SmartHR tenant subdomain.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-subdomain",
+      "key": "tenant"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.smarthr.jp/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f1b2d603-ca27-4500-b245-78a850a56276",
+    "name": "SmartHR Business Establishments Custom Field Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp). It exposes an organization's employee (\"crew\") records and the master data around them - departments, employment types, custom field templates, business establishments - plus webhook subscriptions for change notifications. The API is served from each customer's own tenant subdomain (https://{tenant}.smarthr.jp/api) and all resources live under the /v1 path. Authentication is a per-tenant access token passed as a Bearer token (or via HTTP Basic with the token as the username).\nThis document models a representative, grounded subset of the API. The endpoints below are confirmed against SmartHR's published API reference and the community Go SDK (github.com/ktsujichan/smarthr-sdk-go). SmartHR's full API reference documents additional resources (dependents, bank accounts, payrolls, positions, job titles, tags, companies, and more) that are not modeled here.\n\nContact Support:\n Name: SmartHR for Developers",
+      "type": "text/plain"
+    }
+  }
+}

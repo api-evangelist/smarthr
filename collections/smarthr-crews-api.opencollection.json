@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SmartHR Business Establishments Crews API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Crews",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List crews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crews",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, starting at 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 100)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Property to sort by, for example emp_status."
+              },
+              {
+                "name": "emp_status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by employment status."
+              }
+            ]
+          },
+          "docs": "Lists employee (crew) records for the tenant. Supports pagination via page and per_page, sorting via sort, and filtering by employment status and other attributes."
+        },
+        {
+          "info": {
+            "name": "Create a crew",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crews",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new employee (crew) record."
+        },
+        {
+          "info": {
+            "name": "Get a crew",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crews/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieves a single employee (crew) record by ID."
+        },
+        {
+          "info": {
+            "name": "Update a crew",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crews/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing employee (crew) record."
+        },
+        {
+          "info": {
+            "name": "Delete a crew",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crews/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ]
+          },
+          "docs": "Deletes an employee (crew) record."
+        },
+        {
+          "info": {
+            "name": "Invite a crew",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crews/:id/invite",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a SmartHR account invitation to the employee (crew) so they can log in and complete their own profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

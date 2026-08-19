@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SmartHR Business Establishments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Establishments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List business establishments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.smarthr.jp/api/v1/biz_establishments",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, starting at 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 100)."
+              }
+            ]
+          },
+          "docs": "Lists the business establishments (jigyosho) registered for the tenant, used for social insurance and labor administration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

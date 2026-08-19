@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SmartHR Business Establishments Custom Field Templates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Field Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List crew custom field templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, starting at 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 100)."
+              }
+            ]
+          },
+          "docs": "Lists the custom field templates that define additional fields attached to crew records for the tenant."
+        },
+        {
+          "info": {
+            "name": "Create a crew custom field template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new crew custom field template."
+        },
+        {
+          "info": {
+            "name": "Get a crew custom field template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieves a single crew custom field template by ID."
+        },
+        {
+          "info": {
+            "name": "Update a crew custom field template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing crew custom field template."
+        },
+        {
+          "info": {
+            "name": "Delete a crew custom field template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.smarthr.jp/api/v1/crew_custom_field_templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource."
+              }
+            ]
+          },
+          "docs": "Deletes a crew custom field template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

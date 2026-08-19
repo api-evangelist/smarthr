@@ -1,0 +1,1932 @@
+{
+  "item": [
+    {
+      "id": "910f8eab-a17a-41b0-a00a-e01b160fd950",
+      "name": "Crews",
+      "description": {
+        "content": "Employee (\"crew\") records - the core personnel objects in SmartHR.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66d91051-4c9b-4be3-81d9-a132fc60c76a",
+          "name": "List crews",
+          "request": {
+            "name": "List crews",
+            "description": {
+              "content": "Lists employee (crew) records for the tenant. Supports pagination via page and per_page, sorting via sort, and filtering by employment status and other attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crews"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number, starting at 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "Number of records per page (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Property to sort by, for example emp_status."
+                },
+                {
+                  "disabled": false,
+                  "key": "emp_status",
+                  "value": "<string>",
+                  "description": "Filter by employment status."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3376ee2d-a082-41f0-952f-d89429be3e08",
+              "name": "A page of crew records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "emp_status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total number of records matching the query.",
+                  "key": "x-total-count",
+                  "value": "2210"
+                },
+                {
+                  "disabled": false,
+                  "description": "Remaining requests in the current rate-limit window.",
+                  "key": "x-rate-limit-remaining",
+                  "value": "2210"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"emp_code\": \"string\",\n    \"last_name\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name_yomi\": \"string\",\n    \"first_name_yomi\": \"string\",\n    \"business_email\": \"5PKU3@SenMEVIHTuBJGvJcewrpYOXIgDjF.lrc\",\n    \"department_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"employment_type_id\": \"string\",\n    \"gender\": \"female\",\n    \"birth_at\": \"1959-11-20\",\n    \"entered_at\": \"1954-12-16\",\n    \"resigned_at\": \"1982-09-09\",\n    \"id\": \"string\",\n    \"emp_status\": \"retired\",\n    \"created_at\": \"2009-09-21T05:45:04.108Z\",\n    \"updated_at\": \"2015-07-26T07:32:20.836Z\"\n  },\n  {\n    \"emp_code\": \"string\",\n    \"last_name\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name_yomi\": \"string\",\n    \"first_name_yomi\": \"string\",\n    \"business_email\": \"Xv6oUC5@sHeZPfjTHKjcf.gxoi\",\n    \"department_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"employment_type_id\": \"string\",\n    \"gender\": \"other\",\n    \"birth_at\": \"1978-06-07\",\n    \"entered_at\": \"2018-03-13\",\n    \"resigned_at\": \"2004-08-05\",\n    \"id\": \"string\",\n    \"emp_status\": \"absent\",\n    \"created_at\": \"1989-03-13T00:01:47.539Z\",\n    \"updated_at\": \"2019-11-04T16:09:37.310Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae84cf13-c48a-41c3-8269-a322bebf9d3f",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "emp_status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4511,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 5211.190442130431\n    },\n    {\n      \"key_0\": 6630,\n      \"key_1\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5857a56a-f958-4d41-a98c-b536a6f4e9dd",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "emp_status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dd62e55-7d03-4d47-a495-fe9cebb0c0f9",
+          "name": "Create a crew",
+          "request": {
+            "name": "Create a crew",
+            "description": {
+              "content": "Creates a new employee (crew) record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crews"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ebe9447-0218-4370-90a7-498aa0d3ef24",
+              "name": "The created crew record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\",\n  \"id\": \"string\",\n  \"emp_status\": \"retired\",\n  \"created_at\": \"1976-10-10T00:45:16.443Z\",\n  \"updated_at\": \"1953-12-03T19:06:47.372Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c372867f-4dfb-4978-8978-6d2069e69fc5",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfe5d351-1f7f-4f25-8c3e-a6e82fbe1bc9",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61540ba5-05a3-45b9-b355-314ab31435f3",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a54a443-aefe-4137-a42a-6ddaf59ddf6c",
+          "name": "Get a crew",
+          "request": {
+            "name": "Get a crew",
+            "description": {
+              "content": "Retrieves a single employee (crew) record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crews",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7fe8f97-92d7-4f93-be38-3f7ce746b0d4",
+              "name": "The requested crew record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\",\n  \"id\": \"string\",\n  \"emp_status\": \"retired\",\n  \"created_at\": \"1976-10-10T00:45:16.443Z\",\n  \"updated_at\": \"1953-12-03T19:06:47.372Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c94d4e4-386f-4b3e-b6d7-263abee7f2de",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "991f32b6-6196-448e-b159-4672b6535ac0",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73526aba-b89f-42c2-acb1-1604e6c08e23",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb08d154-dc5f-4355-98ad-4387106ba349",
+          "name": "Update a crew",
+          "request": {
+            "name": "Update a crew",
+            "description": {
+              "content": "Updates an existing employee (crew) record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crews",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06af74e8-0ab3-49b4-9473-24a62cffc226",
+              "name": "The updated crew record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\",\n  \"id\": \"string\",\n  \"emp_status\": \"retired\",\n  \"created_at\": \"1976-10-10T00:45:16.443Z\",\n  \"updated_at\": \"1953-12-03T19:06:47.372Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6928983d-e9e0-4e7b-ae71-62cd96791922",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80e12db0-a4ef-404a-92cc-bfe2fdfe51b0",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f4915a0-8c56-4bb3-9a62-db7a3489ffbf",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59eca253-9cf6-436b-a2d5-83f0d51fe7d0",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be26a679-318d-422f-8d7e-bc181d4b734f",
+          "name": "Delete a crew",
+          "request": {
+            "name": "Delete a crew",
+            "description": {
+              "content": "Deletes an employee (crew) record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crews",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9c428c6-3072-4af5-9c25-49d79d3e3c38",
+              "name": "The crew record was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c8e39b2-799d-4133-9d38-ef9a1b426914",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7e3c80c-50ac-40ab-9496-2c9ae481f22e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b6ad85c-cd13-4987-8238-7b15e500f2c4",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc029e07-8c43-4dac-8114-5176ec646743",
+          "name": "Invite a crew",
+          "request": {
+            "name": "Invite a crew",
+            "description": {
+              "content": "Sends a SmartHR account invitation to the employee (crew) so they can log in and complete their own profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "crews",
+                ":id",
+                "invite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource."
+                },
+                {
+                  "description": "The customer's SmartHR tenant subdomain.",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"crew_input_form_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33dd152d-c657-4313-b87a-fee2057a3429",
+              "name": "The invitation was sent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crew_input_form_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emp_code\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name_yomi\": \"<string>\",\n  \"first_name_yomi\": \"<string>\",\n  \"business_email\": \"<email>\",\n  \"department_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"employment_type_id\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"birth_at\": \"<date>\",\n  \"entered_at\": \"<date>\",\n  \"resigned_at\": \"<date>\",\n  \"id\": \"string\",\n  \"emp_status\": \"retired\",\n  \"created_at\": \"1976-10-10T00:45:16.443Z\",\n  \"updated_at\": \"1953-12-03T19:06:47.372Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b58247b-8710-40f5-8445-734afa8b5330",
+              "name": "Missing or invalid access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crew_input_form_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6632ef47-7806-4e52-a551-ecf9fd52a0fb",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crew_input_form_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95eb166f-783a-4393-8218-89c7956f0ded",
+              "name": "Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "crews",
+                    ":id",
+                    "invite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource."
+                    },
+                    {
+                      "description": "The customer's SmartHR tenant subdomain.",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crew_input_form_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4078,\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"key_0\": 2687,\n      \"key_1\": 3224.554916032236,\n      \"key_2\": 1063.8901433838244\n    },\n    {\n      \"key_0\": 2479.0791327849506\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The customer's SmartHR tenant subdomain.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-subdomain",
+      "key": "tenant"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.smarthr.jp/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ae13edce-8e0d-4816-8e26-06e8b8ebb4dd",
+    "name": "SmartHR Business Establishments Crews API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp). It exposes an organization's employee (\"crew\") records and the master data around them - departments, employment types, custom field templates, business establishments - plus webhook subscriptions for change notifications. The API is served from each customer's own tenant subdomain (https://{tenant}.smarthr.jp/api) and all resources live under the /v1 path. Authentication is a per-tenant access token passed as a Bearer token (or via HTTP Basic with the token as the username).\nThis document models a representative, grounded subset of the API. The endpoints below are confirmed against SmartHR's published API reference and the community Go SDK (github.com/ktsujichan/smarthr-sdk-go). SmartHR's full API reference documents additional resources (dependents, bank accounts, payrolls, positions, job titles, tags, companies, and more) that are not modeled here.\n\nContact Support:\n Name: SmartHR for Developers",
+      "type": "text/plain"
+    }
+  }
+}
