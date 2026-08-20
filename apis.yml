@@ -33,6 +33,17 @@ tags:
 - Employees
 - Personnel
 - Onboarding
+- Software-as-a-Service
+tags_raw:
+- HR
+- Human Resources
+- HRIS
+- Labor Management
+- Payroll
+- Japan
+- Employees
+- Personnel
+- Onboarding
 - SaaS
 created: '2026-07-12'
 modified: '2026-07-12'
@@ -144,6 +155,8 @@ apis:
   humanURL: https://developer.smarthr.jp/api
   baseURL: https://{tenant}.smarthr.jp/api
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
