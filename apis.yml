@@ -9,6 +9,18 @@ description: SmartHR is a leading Japanese cloud HR, labor, and personnel manage
   for change notifications. The API is served from each customer's own tenant
   subdomain (https://{tenant}.smarthr.jp/api) under a /v1 path, and is authenticated
   with a per-tenant access token passed as a Bearer token.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
