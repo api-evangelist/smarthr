@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: SmartHR Business Establishments API
-  description: 'The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp). It exposes an organization''s employee ("crew") records and the master data around them - departments, employment types, custom field templates, business establishments - plus webhook subscriptions for change notifications. The API is served from each customer''s own tenant subdomain (https://{tenant}.smarthr.jp/api) and all resources live under the /v1 path. Authentication is a per-tenant access token passed as a Bearer token (or via HTTP Basic with the token as the username).
-
-    This document models a representative, grounded subset of the API. The endpoints below are confirmed against SmartHR''s published API reference and the community Go SDK (github.com/ktsujichan/smarthr-sdk-go). SmartHR''s full API reference documents additional resources (dependents, bank accounts, payrolls, positions, job titles, tags, companies, and more) that are not modeled here.'
+  description: The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp).
   version: '1.0'
   contact:
     name: SmartHR for Developers
@@ -49,41 +47,25 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number, starting at 1.
+  headers:
+    XTotalCount:
+      description: Total number of records matching the query.
       schema:
         type: integer
-        minimum: 1
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Number of records per page (max 100).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-        errors:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     BizEstablishment:
       type: object
       properties:
@@ -105,24 +87,40 @@ components:
         updated_at:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  headers:
-    XTotalCount:
-      description: Total number of records matching the query.
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Number of records per page (max 100).
       schema:
         type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, starting at 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

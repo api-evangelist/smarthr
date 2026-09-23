@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: SmartHR Business Establishments Crews API
-  description: 'The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp). It exposes an organization''s employee ("crew") records and the master data around them - departments, employment types, custom field templates, business establishments - plus webhook subscriptions for change notifications. The API is served from each customer''s own tenant subdomain (https://{tenant}.smarthr.jp/api) and all resources live under the /v1 path. Authentication is a per-tenant access token passed as a Bearer token (or via HTTP Basic with the token as the username).
-
-    This document models a representative, grounded subset of the API. The endpoints below are confirmed against SmartHR''s published API reference and the community Go SDK (github.com/ktsujichan/smarthr-sdk-go). SmartHR''s full API reference documents additional resources (dependents, bank accounts, payrolls, positions, job titles, tags, companies, and more) that are not modeled here.'
+  title: SmartHR Crews API
+  description: The SmartHR API is a per-tenant REST API for the SmartHR cloud HR / labor and personnel management platform (smarthr.jp).
   version: '1.0'
   contact:
     name: SmartHR for Developers
@@ -188,69 +186,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number, starting at 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource.
-      schema:
-        type: string
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Number of records per page (max 100).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   schemas:
-    Crew:
-      allOf:
-      - $ref: '#/components/schemas/CrewInput'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: Unique crew identifier.
-          emp_status:
-            type: string
-            description: Employment status.
-            enum:
-            - employed
-            - absent
-            - retired
-          created_at:
-            type: string
-            format: date-time
-          updated_at:
-            type: string
-            format: date-time
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        type:
-          type: string
-        message:
-          type: string
-        errors:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     CrewInput:
       type: object
       properties:
@@ -293,6 +229,41 @@ components:
           type: string
           format: date
           description: Date the employee resigned, if applicable.
+    Crew:
+      allOf:
+      - $ref: '#/components/schemas/CrewInput'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: Unique crew identifier.
+          emp_status:
+            type: string
+            description: Employment status.
+            enum:
+            - employed
+            - absent
+            - retired
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
   headers:
     XRateLimitRemaining:
       description: Remaining requests in the current rate-limit window.
@@ -309,14 +280,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid access token.
+    ValidationError:
+      description: The request payload failed validation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
+    Unauthorized:
+      description: Missing or invalid access token.
       content:
         application/json:
           schema:
@@ -327,6 +298,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: string
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Number of records per page (max 100).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, starting at 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

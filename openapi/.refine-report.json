@@ -1,12 +1,7 @@
 {
   "provider": "smarthr",
   "sources": [
-    "smarthr-business-establishments-api-openapi.yml",
-    "smarthr-crews-api-openapi.yml",
-    "smarthr-custom-field-templates-api-openapi.yml",
-    "smarthr-departments-api-openapi.yml",
-    "smarthr-employment-types-api-openapi.yml",
-    "smarthr-webhooks-api-openapi.yml"
+    "_original/smarthr-openapi.yml"
   ],
   "outputs": [
     "smarthr-business-establishments-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "smarthr-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "smarthr-business-establishments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smarthr-crews-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smarthr-custom-field-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smarthr-departments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smarthr-employment-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "smarthr-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
