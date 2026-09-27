@@ -1,7 +1,8 @@
 {
   "provider": "smarthr",
   "sources": [
-    "_original/smarthr-openapi.yml"
+    "_original/smarthr-openapi.yml",
+    "kufu-default-api-openapi.yml"
   ],
   "outputs": [
     "smarthr-business-establishments-api-openapi.yml",
@@ -9,15 +10,18 @@
     "smarthr-custom-field-templates-api-openapi.yml",
     "smarthr-departments-api-openapi.yml",
     "smarthr-employment-types-api-openapi.yml",
-    "smarthr-webhooks-api-openapi.yml"
+    "smarthr-webhooks-api-openapi.yml",
+    "smarthr-default-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "archived openapi/kufu-default-api-openapi.yml"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "smarthr-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+1 apis, 7 total)"
   ],
   "skipped": [
     "smarthr-business-establishments-api-openapi.yml: previously refined output, superseded by openapi/_original/",

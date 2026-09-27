@@ -183,6 +183,42 @@ apis:
     url: collections/smarthr.opencollection.json
   - type: Documentation
     url: https://developer.smarthr.jp/api/about_webhook
+- aid: smarthr:smarthr-default-api
+  name: SmartHR カスタム家族項目テンプレート API
+  description: カスタム家族項目テンプレートを操作します
+  humanURL: https://developer.smarthr.jp/api
+  baseURL: https://{tenant}.smarthr.jp/api
+  tags:
+  - カスタム家族項目テンプレート
+  properties:
+  - type: OpenAPI
+    url: openapi/smarthr-default-api-openapi.yml
+  - type: Webhooks
+    url: asyncapi/kufu-smarthr-webhooks.yml
+  - type: Authentication
+    url: authentication/kufu-authentication.yml
+  - type: Conventions
+    url: conventions/kufu-conventions.yml
+  - type: ErrorCatalog
+    url: errors/kufu-problem-types.yml
+  - type: DataModel
+    url: data-model/kufu-data-model.yml
+  - type: Sandbox
+    url: sandbox/kufu-sandbox.yml
+  - type: Lifecycle
+    url: lifecycle/kufu-lifecycle.yml
+  - type: Conformance
+    url: conformance/kufu-conformance.yml
+  - type: LLMsTxt
+    url: llms/kufu-llms.txt
+  - type: Documentation
+    url: https://developer.smarthr.jp/api
+  - type: APIReference
+    url: https://developer.smarthr.jp/api
+  - type: GettingStarted
+    url: https://developer.smarthr.jp/api/about_api
+  - type: ChangeLog
+    url: https://support.smarthr.jp/ja/release-notes/api/page/1/
 common:
 - type: AgenticAccess
   url: agentic-access/smarthr-agentic-access.yml
@@ -207,3 +243,4 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-former-name: KUFU, Inc.

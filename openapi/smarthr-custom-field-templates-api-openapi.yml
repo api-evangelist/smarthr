@@ -136,18 +136,7 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  headers:
-    XTotalCount:
-      description: Total number of records matching the query.
-      schema:
-        type: integer
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     ValidationError:
       description: The request payload failed validation.
       content:
@@ -166,20 +155,40 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Number of records per page (max 100).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, starting at 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   schemas:
-    CrewCustomFieldTemplate:
-      allOf:
-      - $ref: '#/components/schemas/CrewCustomFieldTemplateInput'
-      - type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          updated_at:
-            type: string
-            format: date-time
     CrewCustomFieldTemplateInput:
       type: object
       required:
@@ -211,6 +220,19 @@ components:
                 type: string
               position:
                 type: integer
+    CrewCustomFieldTemplate:
+      allOf:
+      - $ref: '#/components/schemas/CrewCustomFieldTemplateInput'
+      - type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
     Error:
       type: object
       properties:
@@ -225,33 +247,11 @@ components:
           items:
             type: object
             additionalProperties: true
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource.
-      schema:
-        type: string
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Number of records per page (max 100).
+  headers:
+    XTotalCount:
+      description: Total number of records matching the query.
       schema:
         type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number, starting at 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   securitySchemes:
     bearerAuth:
       type: http
