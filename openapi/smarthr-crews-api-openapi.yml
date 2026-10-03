@@ -186,7 +186,89 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, starting at 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Number of records per page (max 100).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  headers:
+    XRateLimitRemaining:
+      description: Remaining requests in the current rate-limit window.
+      schema:
+        type: integer
+    XTotalCount:
+      description: Total number of records matching the query.
+      schema:
+        type: integer
   schemas:
+    Crew:
+      allOf:
+      - $ref: '#/components/schemas/CrewInput'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: Unique crew identifier.
+          emp_status:
+            type: string
+            description: Employment status.
+            enum:
+            - employed
+            - absent
+            - retired
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
     CrewInput:
       type: object
       properties:
@@ -229,27 +311,6 @@ components:
           type: string
           format: date
           description: Date the employee resigned, if applicable.
-    Crew:
-      allOf:
-      - $ref: '#/components/schemas/CrewInput'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: Unique crew identifier.
-          emp_status:
-            type: string
-            description: Employment status.
-            enum:
-            - employed
-            - absent
-            - retired
-          created_at:
-            type: string
-            format: date-time
-          updated_at:
-            type: string
-            format: date-time
     Error:
       type: object
       properties:
@@ -264,67 +325,6 @@ components:
           items:
             type: object
             additionalProperties: true
-  responses:
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Number of records per page (max 100).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number, starting at 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-  headers:
-    XRateLimitRemaining:
-      description: Remaining requests in the current rate-limit window.
-      schema:
-        type: integer
-    XTotalCount:
-      description: Total number of records matching the query.
-      schema:
-        type: integer
   securitySchemes:
     bearerAuth:
       type: http
