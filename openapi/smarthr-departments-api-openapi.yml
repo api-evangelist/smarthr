@@ -136,72 +136,12 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      required: false
-      description: Page number, starting at 1.
+  headers:
+    XTotalCount:
+      description: Total number of records matching the query.
       schema:
         type: integer
-        minimum: 1
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      required: false
-      description: Number of records per page (max 100).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ValidationError:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    TooManyRequests:
-      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Department:
-      allOf:
-      - $ref: '#/components/schemas/DepartmentInput'
-      - type: object
-        properties:
-          id:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          updated_at:
-            type: string
-            format: date-time
     DepartmentInput:
       type: object
       required:
@@ -217,6 +157,19 @@ components:
         parent_id:
           type: string
           description: ID of the parent department, if any.
+    Department:
+      allOf:
+      - $ref: '#/components/schemas/DepartmentInput'
+      - type: object
+        properties:
+          id:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
     Error:
       type: object
       properties:
@@ -231,11 +184,58 @@ components:
           items:
             type: object
             additionalProperties: true
-  headers:
-    XTotalCount:
-      description: Total number of records matching the query.
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      required: false
+      description: Number of records per page (max 100).
       schema:
         type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, starting at 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource.
+      schema:
+        type: string
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded. SmartHR allows 5,000 requests/hour and 10 requests/second per access token, and 50,000 requests/minute per subdomain.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
