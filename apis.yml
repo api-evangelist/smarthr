@@ -188,7 +188,8 @@ apis:
   description: カスタム家族項目テンプレートを操作します
   humanURL: https://developer.smarthr.jp/api
   baseURL: https://{tenant}.smarthr.jp/api
-  tags:
+  tags: []
+  tags_raw:
   - カスタム家族項目テンプレート
   properties:
   - type: OpenAPI
@@ -220,6 +221,9 @@ apis:
   - type: ChangeLog
     url: https://support.smarthr.jp/ja/release-notes/api/page/1/
 common:
+- type: CapabilityMap
+  url: capabilities/smarthr-capability-edges.yml
+  name: SmartHR Business Capability Map
 - type: AgenticAccess
   url: agentic-access/smarthr-agentic-access.yml
 - type: DomainSecurity
